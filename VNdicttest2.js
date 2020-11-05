@@ -74,8 +74,9 @@ class vn_Cambridge {
             this.removelinks(content);
             definition += content.innerHTML;
         }
-        let audios = [];
-        let pos = T(entry.querySelector('.posgram'));
+        let audios = '';
+        for (const content of contents) {
+            let pos = T(entry.querySelector('.posgram'));
             pos = pos ? `<span class='pos'>${pos}</span>` : '';
             audios[0] = entry.querySelector(".uk.dpron-i source");
             audios[0] = audios[0] ? 'https://dictionary.cambridge.org' + audios[0].getAttribute('src') : '';
@@ -83,6 +84,7 @@ class vn_Cambridge {
             audios[1] = entry.querySelector(".us.dpron-i source");
             audios[1] = audios[1] ? 'https://dictionary.cambridge.org' + audios[1].getAttribute('src') : '';
             //audios[1] = audios[1].replace('https', 'http');
+        }  
         let css = this.renderCSS();
         return definition ? css + definition : null;
     }
